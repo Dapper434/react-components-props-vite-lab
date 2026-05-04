@@ -1,15 +1,20 @@
 import React from "react";
+import Article from "./Article";
 
-function Article({ title, date, preview, minutes }) {
+function ArticleList({ posts }) {
   return (
-    <article>
-      <h3>{title}</h3>
-      <small>
-        {date ? `${date} · ` : ""}{minutes} min read
-      </small>
-      <p>{preview}</p>
-    </article>
+    <main>
+      {posts.map((post) => (
+        <Article
+          key={post.id}
+          title={post.title}
+          date={post.date}
+          preview={post.preview}
+          minutes={post.minutes}
+        />
+      ))}
+    </main>
   );
 }
 
-export default Article;
+export default ArticleList;
